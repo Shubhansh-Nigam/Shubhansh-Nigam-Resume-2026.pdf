@@ -3,30 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shubhansh Nigam | Growth Marketing Lead</title>
+  <title>Shubhansh Nigam | Digital Marketing Lead & Growth Manager</title>
+  
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Premium Fonts: Syne (Display), Plus Jakarta Sans (Body), JetBrains Mono (Data) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- GSAP & ScrollTrigger for High-End Motion Graphics -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            emerald: '#006B57',
-            yellow: '#FFC83D',
-            ink: '#0A0A0A',
-            ivory: '#F5F2EA',
-            positiveGreen: '#35C58A',
+            brandGreen: '#006B57',
+            brandGold: '#FFC83D',
+            brandDark: '#0A0A0A',
+            brandPaper: '#F5F2EA',
+            brandAccent: '#35C58A',
+            brandBlue: '#5E7CFF',
           },
           fontFamily: {
-            sans: ['Space Grotesk', 'sans-serif'],
-            mono: ['Space Mono', 'monospace'],
+            syne: ['Syne', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
           }
         }
       }
     }
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
+
   <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0A0A0A; }
+    ::-webkit-scrollbar-thumb { background: #006B57; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #FFC83D; }
+
+    /* Infinite Marquee Animation */
     @keyframes marquee {
       0% { transform: translateX(0%); }
       100% { transform: translateX(-50%); }
@@ -34,32 +57,67 @@
     .animate-marquee {
       display: flex;
       width: 200%;
-      animation: marquee 25s linear infinite;
+      animation: marquee 22s linear infinite;
+    }
+    .animate-marquee:hover { animation-play-state: paused; }
+
+    /* Glassmorphism & Shimmer Cards */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(255, 200, 61, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px -10px rgba(0, 107, 87, 0.3);
+    }
+
+    /* Glow Elements */
+    .glow-effect {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0, 107, 87, 0.25) 0%, rgba(10, 10, 10, 0) 70%);
+      pointer-events: none;
+      border-radius: 50%;
+    }
+
+    /* SVG Chart Animation */
+    .chart-line {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      transition: stroke-dashoffset 2s ease-in-out;
+    }
+    .chart-active .chart-line {
+      stroke-dashoffset: 0;
     }
   </style>
 </head>
-<body class="bg-[#F5F2EA] text-[#0A0A0A] font-sans antialiased selection:bg-[#FFC83D]">
+<body class="bg-[#F5F2EA] text-[#0A0A0A] font-sans antialiased selection:bg-[#FFC83D] selection:text-[#0A0A0A]">
 
-  <!-- NAVBAR -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A] text-[#F5F2EA] border-b border-white/10">
+  <!-- PERSISTENT EDITORIAL NAVIGATION -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A]/90 backdrop-blur-md border-b border-white/10">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center space-x-3">
-        <div class="w-10 h-10 bg-[#006B57] flex items-center justify-center rounded border border-[#FFC83D]/30 font-mono font-black text-[#FFC83D]">
-          SN
+      <a href="#" class="flex items-center space-x-3 group">
+        <div class="relative w-10 h-10 bg-[#006B57] flex items-center justify-center rounded overflow-hidden border border-[#FFC83D]/30 transition-transform group-hover:scale-105">
+          <div class="absolute inset-0 bg-[#FFC83D] translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+          <span class="relative z-10 font-mono font-extrabold text-[#FFC83D] group-hover:text-[#0A0A0A] text-sm tracking-tighter">SN</span>
         </div>
-        <span class="font-bold tracking-tight text-sm uppercase font-mono">Shubhansh Nigam</span>
+        <span class="font-syne font-bold tracking-tight text-sm uppercase text-white font-mono">Shubhansh Nigam</span>
       </a>
 
       <div class="hidden md:flex items-center space-x-8 text-xs font-mono uppercase tracking-wider text-white/70">
-        <a href="#work" class="hover:text-[#FFC83D] transition-colors">01. Work</a>
-        <a href="#results" class="hover:text-[#FFC83D] transition-colors">02. Results</a>
+        <a href="#results" class="hover:text-[#FFC83D] transition-colors">01. Impact</a>
+        <a href="#work" class="hover:text-[#FFC83D] transition-colors">02. Work</a>
         <a href="#playbook" class="hover:text-[#FFC83D] transition-colors">03. Playbook</a>
         <a href="#experience" class="hover:text-[#FFC83D] transition-colors">04. Career</a>
         <a href="#contact" class="hover:text-[#FFC83D] transition-colors">05. Contact</a>
       </div>
 
       <div class="flex items-center space-x-3">
-        <a href="Shubhansh-Nigam-Resume-2026.pdf" target="_blank" class="flex items-center space-x-1.5 text-xs font-mono font-bold bg-[#FFC83D] text-[#0A0A0A] hover:bg-[#006B57] hover:text-white px-4 py-2 rounded transition-all">
+        <a href="Shubhansh-Nigam-Resume-2026.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-xs font-mono font-bold bg-[#FFC83D] text-[#0A0A0A] hover:bg-[#006B57] hover:text-white px-4 py-2 rounded transition-all duration-300 shadow-lg hover:shadow-[#FFC83D]/20">
           <i data-lucide="download" class="w-3.5 h-3.5"></i>
           <span>RESUME</span>
         </a>
@@ -68,141 +126,483 @@
   </nav>
 
   <!-- HERO SECTION -->
-  <section class="pt-32 pb-24 px-6 bg-[#0A0A0A] text-[#F5F2EA] border-b border-white/10">
-    <div class="max-w-7xl mx-auto">
-      <div class="inline-flex items-center space-x-2 text-xs font-mono text-[#FFC83D] bg-white/5 border border-white/10 px-3 py-1.5 rounded-full mb-8">
+  <section class="pt-32 pb-24 px-6 bg-[#0A0A0A] text-[#F5F2EA] relative overflow-hidden border-b border-white/10">
+    <div class="glow-effect top-10 right-10"></div>
+    <div class="glow-effect bottom-10 left-10"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      
+      <div class="reveal-hero inline-flex items-center space-x-2 text-xs font-mono text-[#FFC83D] bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full mb-8">
         <span class="w-2 h-2 rounded-full bg-[#35C58A] animate-pulse"></span>
-        <span>GROWTH MANAGER & DIGITAL MARKETING LEAD · MUMBAI</span>
+        <span class="tracking-wide">DIGITAL MARKETING LEAD &amp; GROWTH MANAGER · MUMBAI</span>
       </div>
 
-      <h1 class="text-5xl md:text-8xl font-black tracking-tighter leading-[0.95] mb-8 uppercase max-w-6xl">
+      <h1 class="reveal-hero font-syne text-5xl md:text-8xl font-black tracking-tighter leading-[0.92] mb-8 uppercase max-w-6xl">
         Growth strategy that moves from <span class="text-[#FFC83D] underline decoration-[#006B57] underline-offset-8">impression</span> to <span class="text-[#35C58A]">revenue</span>.
       </h1>
 
-      <p class="text-lg md:text-2xl text-white/70 max-w-3xl font-light leading-relaxed mb-12">
+      <p class="reveal-hero text-base md:text-xl text-white/70 max-w-3xl font-light leading-relaxed mb-12">
         I lead paid media, SEO/AEO, lifecycle automation, and conversion strategy for consumer and service brands across India, the UAE, the UK, and the US.
       </p>
 
-      <!-- METRICS GRID -->
+      <!-- VERIFIED METRICS GRID WITH ANIMATED COUNTERS -->
       <div id="results" class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-10 border-t border-white/10">
-        <div class="border-l-2 border-[#006B57] pl-4">
-          <div class="text-4xl md:text-6xl font-black text-[#FFC83D] font-mono">₹32L+</div>
+        <div class="reveal-metric border-l-2 border-[#006B57] pl-5">
+          <div class="text-4xl md:text-6xl font-black text-[#FFC83D] font-mono tracking-tight flex items-baseline">
+            <span>₹</span><span class="counter" data-target="32">0</span><span>L+</span>
+          </div>
           <div class="text-xs font-bold uppercase tracking-wider text-white mt-1">Quarterly Ad Spend</div>
-          <div class="text-[11px] text-white/50">Managed across accounts</div>
+          <div class="text-[11px] text-white/50">Optimized across active accounts</div>
         </div>
-        <div class="border-l-2 border-[#006B57] pl-4">
-          <div class="text-4xl md:text-6xl font-black text-[#FFC83D] font-mono">₹1.2Cr+</div>
+
+        <div class="reveal-metric border-l-2 border-[#006B57] pl-5">
+          <div class="text-4xl md:text-6xl font-black text-[#FFC83D] font-mono tracking-tight flex items-baseline">
+            <span>₹</span><span class="counter" data-target="1.2" data-decimals="1">0</span><span>Cr+</span>
+          </div>
           <div class="text-xs font-bold uppercase tracking-wider text-white mt-1">E-Commerce Revenue</div>
-          <div class="text-[11px] text-white/50">Direct contribution</div>
+          <div class="text-[11px] text-white/50">Direct contribution &amp; attribution</div>
         </div>
-        <div class="border-l-2 border-[#006B57] pl-4">
-          <div class="text-4xl md:text-6xl font-black text-[#FFC83D] font-mono">3x+</div>
+
+        <div class="reveal-metric border-l-2 border-[#006B57] pl-5">
+          <div class="text-4xl md:text-6xl font-black text-[#FFC83D] font-mono tracking-tight flex items-baseline">
+            <span class="counter" data-target="3">0</span><span>x+</span>
+          </div>
           <div class="text-xs font-bold uppercase tracking-wider text-white mt-1">Portfolio ROAS</div>
-          <div class="text-[11px] text-white/50">Maintained across campaigns</div>
+          <div class="text-[11px] text-white/50">Maintained across paid accounts</div>
         </div>
-        <div class="border-l-2 border-[#006B57] pl-4">
-          <div class="text-4xl md:text-6xl font-black text-[#FFC83D] font-mono">6+</div>
-          <div class="text-xs font-bold uppercase tracking-wider text-white mt-1">Years Experience</div>
-          <div class="text-[11px] text-white/50">Growth management</div>
+
+        <div class="reveal-metric border-l-2 border-[#006B57] pl-5">
+          <div class="text-4xl md:text-6xl font-black text-[#FFC83D] font-mono tracking-tight flex items-baseline">
+            <span class="counter" data-target="6">0</span><span>+ Yrs</span>
+          </div>
+          <div class="text-xs font-bold uppercase tracking-wider text-white mt-1">Full-Funnel Experience</div>
+          <div class="text-[11px] text-white/50">Growth management &amp; strategy</div>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <section class="py-6 bg-[#006B57] text-[#F5F2EA] overflow-hidden border-b border-black/10">
-    <div class="animate-marquee font-mono text-xl font-black uppercase tracking-tight whitespace-nowrap">
-      <span>The Belgian Waffle Co. / Baskin-Robbins / PetJet Express / Nudge Sports / TajSATS / Qmin / Nekta Foods / BRICS Conclave 2026 / </span>
-      <span>The Belgian Waffle Co. / Baskin-Robbins / PetJet Express / Nudge Sports / TajSATS / Qmin / Nekta Foods / BRICS Conclave 2026 / </span>
+  <!-- KINETIC BRAND MARQUEE -->
+  <section class="py-6 bg-[#006B57] text-[#F5F2EA] overflow-hidden border-b border-black/10 shadow-inner">
+    <div class="animate-marquee font-mono text-lg md:text-xl font-black uppercase tracking-tight whitespace-nowrap">
+      <span class="flex items-center">
+        The Belgian Waffle Co. <span class="mx-6 text-[#FFC83D]">/</span>
+        Baskin-Robbins India <span class="mx-6 text-[#FFC83D]">/</span>
+        PetJet Express <span class="mx-6 text-[#FFC83D]">/</span>
+        Nudge Sports <span class="mx-6 text-[#FFC83D]">/</span>
+        Amaraanth <span class="mx-6 text-[#FFC83D]">/</span>
+        36.5 Mansion <span class="mx-6 text-[#FFC83D]">/</span>
+        TajSATS / Qmin <span class="mx-6 text-[#FFC83D]">/</span>
+        Nekta Foods <span class="mx-6 text-[#FFC83D]">/</span>
+        BRICS Conclave 2026 <span class="mx-6 text-[#FFC83D]">/</span>
+        Dr. Michelle Shah <span class="mx-6 text-[#FFC83D]">/</span>
+      </span>
+      <span class="flex items-center">
+        The Belgian Waffle Co. <span class="mx-6 text-[#FFC83D]">/</span>
+        Baskin-Robbins India <span class="mx-6 text-[#FFC83D]">/</span>
+        PetJet Express <span class="mx-6 text-[#FFC83D]">/</span>
+        Nudge Sports <span class="mx-6 text-[#FFC83D]">/</span>
+        Amaraanth <span class="mx-6 text-[#FFC83D]">/</span>
+        36.5 Mansion <span class="mx-6 text-[#FFC83D]">/</span>
+        TajSATS / Qmin <span class="mx-6 text-[#FFC83D]">/</span>
+        Nekta Foods <span class="mx-6 text-[#FFC83D]">/</span>
+        BRICS Conclave 2026 <span class="mx-6 text-[#FFC83D]">/</span>
+        Dr. Michelle Shah <span class="mx-6 text-[#FFC83D]">/</span>
+      </span>
     </div>
   </section>
 
-  <!-- CASE STUDIES -->
+  <!-- FEATURED CASE STUDIES -->
   <section id="work" class="py-24 px-6 bg-[#0A0A0A] text-[#F5F2EA]">
-    <div class="max-w-7xl mx-auto mb-16 border-b border-white/10 pb-8">
-      <span class="text-xs font-mono uppercase tracking-widest text-[#FFC83D] block mb-2">01. Selected Engagements</span>
-      <h2 class="text-4xl md:text-6xl font-black tracking-tight text-white uppercase">Featured Case Studies</h2>
+    <div class="max-w-7xl mx-auto mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-[#FFC83D] block mb-2">02. Selected Engagements</span>
+        <h2 class="font-syne text-4xl md:text-6xl font-black tracking-tight text-white uppercase">Featured Case Studies</h2>
+      </div>
+      <p class="text-xs font-mono text-white/50 max-w-xs">
+        VERIFIED CAMPAIGN METRICS &amp; STRATEGIC FUNNEL LEARNINGS
+      </p>
     </div>
 
     <div class="max-w-7xl mx-auto space-y-12">
-      <!-- Case 1 -->
-      <div class="bg-white/5 border border-white/10 rounded-2xl p-8 md:p-10">
-        <span class="text-xs font-mono text-[#FFC83D] bg-white/10 px-3 py-1 rounded uppercase tracking-wider">QSR & Food Retail</span>
-        <h3 class="text-3xl font-bold text-white mt-4 mb-3">The Belgian Waffle Co.</h3>
-        <p class="text-xl font-bold text-[#35C58A] mb-6">141M+ awareness impressions across Meta, Google, and Snapchat</p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
-          <div class="bg-black/40 p-4 rounded border border-white/10">
-            <div class="text-[#FFC83D] font-bold mb-1">Snapchat</div>
-            <div>74.70M Impressions</div>
-            <div class="text-white/50">₹1.70 CPM · 330K Clicks</div>
+      
+      <!-- CASE 1: BELGIAN WAFFLE CO -->
+      <div class="glass-card rounded-2xl p-8 md:p-12 relative overflow-hidden">
+        <div class="flex flex-col lg:flex-row gap-10 justify-between">
+          <div class="lg:w-7/12">
+            <span class="text-xs font-mono text-[#FFC83D] bg-white/10 px-3 py-1 rounded uppercase tracking-wider">QSR &amp; Food Retail</span>
+            <h3 class="font-syne text-3xl md:text-4xl font-extrabold text-white mt-4 mb-3">The Belgian Waffle Co.</h3>
+            <p class="text-xl font-bold text-[#35C58A] mb-6 leading-snug">
+              141M+ awareness impressions across Meta, Google, and Snapchat for National Waffle Day 2025
+            </p>
+            <p class="text-sm text-white/70 mb-8 leading-relaxed">
+              Executed multi-platform media strategy, localized store-level traffic distribution, and high-frequency offer creative across national targets.
+            </p>
+
+            <!-- ANIMATED BAR PROGRESS CHART -->
+            <div class="space-y-4 bg-black/50 p-6 rounded-xl border border-white/10">
+              <div class="text-xs font-mono text-[#FFC83D] uppercase tracking-wider mb-2 flex justify-between">
+                <span>Multi-Platform Impressions Split</span>
+                <span class="text-white/40">141M Total</span>
+              </div>
+              
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs text-white/80">
+                  <span>Snapchat (74.70M)</span>
+                  <span class="text-white/50 font-mono">₹1.70 CPM · 330K clicks</span>
+                </div>
+                <div class="h-2.5 bg-white/10 rounded-full overflow-hidden">
+                  <div class="progress-bar h-full bg-[#FFC83D] rounded-full transition-all duration-1000 w-0" data-width="93%"></div>
+                </div>
+              </div>
+
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs text-white/80">
+                  <span>Meta Ads (46.25M)</span>
+                  <span class="text-white/50 font-mono">₹2.60 CPM · 5.17% CTR (78K clicks)</span>
+                </div>
+                <div class="h-2.5 bg-white/10 rounded-full overflow-hidden">
+                  <div class="progress-bar h-full bg-[#006B57] rounded-full transition-all duration-1000 w-0" data-width="58%"></div>
+                </div>
+              </div>
+
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs text-white/80">
+                  <span>Google Ads (20.17M)</span>
+                  <span class="text-white/50 font-mono">5.36% CTR (143K clicks)</span>
+                </div>
+                <div class="h-2.5 bg-white/10 rounded-full overflow-hidden">
+                  <div class="progress-bar h-full bg-[#5E7CFF] rounded-full transition-all duration-1000 w-0" data-width="25%"></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="bg-black/40 p-4 rounded border border-white/10">
-            <div class="text-[#35C58A] font-bold mb-1">Meta</div>
-            <div>46.25M Impressions</div>
-            <div class="text-white/50">₹2.60 CPM · 5.17% CTR</div>
-          </div>
-          <div class="bg-black/40 p-4 rounded border border-white/10">
-            <div class="text-[#5E7CFF] font-bold mb-1">Google Search/Video</div>
-            <div>20.17M Impressions</div>
-            <div class="text-white/50">143K Clicks · 5.36% CTR</div>
+
+          <!-- INSIGHTS BOX -->
+          <div class="lg:w-5/12 bg-black/60 p-6 md:p-8 rounded-xl border border-white/10 flex flex-col justify-between">
+            <div>
+              <h4 class="text-xs font-mono uppercase text-[#FFC83D] font-bold mb-6 flex items-center space-x-2">
+                <i data-lucide="zap" class="w-4 h-4"></i>
+                <span>Key Execution Pillars</span>
+              </h4>
+              <div class="space-y-5 text-xs text-white/80">
+                <div class="border-l-2 border-[#006B57] pl-4">
+                  <strong class="text-white block font-mono text-sm mb-1">Top-Funnel Scale:</strong>
+                  Short offer-led video creative generated massive scale at sub-₹3.00 CPMs.
+                </div>
+                <div class="border-l-2 border-[#FFC83D] pl-4">
+                  <strong class="text-white block font-mono text-sm mb-1">Mid-Funnel Efficiency:</strong>
+                  CTR reached 5.17% on Meta and 5.36% on Google with high-intent localized copy.
+                </div>
+                <div class="border-l-2 border-[#35C58A] pl-4">
+                  <strong class="text-white block font-mono text-sm mb-1">Catchment Geo-Targeting:</strong>
+                  Allocated budget across 100+ outlet catchments for immediate footfall drive.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Case 2 -->
-      <div class="bg-white/5 border border-white/10 rounded-2xl p-8 md:p-10">
-        <span class="text-xs font-mono text-[#FFC83D] bg-white/10 px-3 py-1 rounded uppercase tracking-wider">Sports Psychology</span>
-        <h3 class="text-3xl font-bold text-white mt-4 mb-3">Nudge Sports</h3>
-        <p class="text-xl font-bold text-[#35C58A] mb-4">77% Organic User Growth (386 → 683 Monthly Users)</p>
-        <p class="text-sm text-white/70">Engineered AEO (Answer Engine Optimization) & keyword architecture to rank on Page 1 of Google and capture AI search intent for athlete mental conditioning queries.</p>
+      <!-- CASE 2: NUDGE SPORTS -->
+      <div class="glass-card rounded-2xl p-8 md:p-12 relative overflow-hidden">
+        <div class="flex flex-col lg:flex-row gap-10 justify-between">
+          <div class="lg:w-7/12">
+            <span class="text-xs font-mono text-[#FFC83D] bg-white/10 px-3 py-1 rounded uppercase tracking-wider">Sports Psychology &amp; Training</span>
+            <h3 class="font-syne text-3xl md:text-4xl font-extrabold text-white mt-4 mb-3">Nudge Sports</h3>
+            <p class="text-xl font-bold text-[#35C58A] mb-6 leading-snug">
+              77% organic user growth (386 → 683 monthly users) with Page 1 average positioning
+            </p>
+            <p class="text-sm text-white/70 mb-8 leading-relaxed">
+              Designed AEO (Answer Engine Optimization) content architecture and structured schema tags to dominate both traditional Google Search and AI answer engines.
+            </p>
+
+            <!-- INTERACTIVE ANIMATED SVG GRAPH -->
+            <div id="nudge-chart-container" class="bg-white p-6 rounded-xl border border-black/10">
+              <div class="flex justify-between items-center mb-4">
+                <div>
+                  <span class="text-xs font-mono uppercase text-[#006B57] font-bold block">Organic Search Trajectory</span>
+                  <span class="text-lg font-bold text-[#0A0A0A]">386 → 683 Active Users</span>
+                </div>
+                <span class="text-xs font-mono font-bold text-[#35C58A] bg-[#35C58A]/10 px-2.5 py-1 rounded">Page 1 Visibility</span>
+              </div>
+
+              <div class="relative h-40 w-full">
+                <svg viewBox="0 0 500 140" class="w-full h-full overflow-visible">
+                  <polyline fill="none" stroke="#006B57" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="chart-line" points="0,110 50,103 100,115 150,68 200,78 250,130 300,38 350,30 405,48 450,40 500,18" />
+                  <circle cx="0" cy="110" r="4" fill="#FFC83D" stroke="#006B57" stroke-width="2"/>
+                  <circle cx="150" cy="68" r="4" fill="#FFC83D" stroke="#006B57" stroke-width="2"/>
+                  <circle cx="300" cy="38" r="4" fill="#FFC83D" stroke="#006B57" stroke-width="2"/>
+                  <circle cx="500" cy="18" r="5" fill="#35C58A" stroke="#006B57" stroke-width="2"/>
+                  <text x="500" y="-2" text-anchor="middle" class="text-[11px] font-mono fill-[#006B57] font-extrabold">683 Users</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:w-5/12 bg-black/60 p-6 md:p-8 rounded-xl border border-white/10 flex flex-col justify-between">
+            <div>
+              <h4 class="text-xs font-mono uppercase text-[#FFC83D] font-bold mb-6 flex items-center space-x-2">
+                <i data-lucide="target" class="w-4 h-4"></i>
+                <span>AEO Strategy Highlights</span>
+              </h4>
+              <div class="space-y-4 text-xs text-white/80">
+                <div class="p-3 bg-white/5 rounded border border-white/5">
+                  <strong class="text-white block font-mono text-sm">Targeted Keyword Intent</strong>
+                  Focused on athlete mental conditioning and performance anxiety queries.
+                </div>
+                <div class="p-3 bg-white/5 rounded border border-white/5">
+                  <strong class="text-white block font-mono text-sm">AI Engine Optimization</strong>
+                  Structured schema &amp; direct Q&amp;A formats to capture ChatGPT &amp; Perplexity citations.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- CASE 3 & 4 GRID -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- PETJET EXPRESS -->
+        <div class="glass-card rounded-2xl p-8">
+          <span class="text-xs font-mono text-[#FFC83D] bg-white/10 px-3 py-1 rounded uppercase tracking-wider">Luxury Aviation</span>
+          <h3 class="font-syne text-2xl font-bold text-white mt-4 mb-2">PetJet Express</h3>
+          <p class="text-base font-bold text-[#35C58A] mb-4">Google Search 6% CTR at ₹0.80 CPC; 11 warm leads generated</p>
+          
+          <div class="bg-black/50 p-4 rounded-xl border border-white/10 my-4 space-y-2 text-xs font-mono">
+            <div class="flex justify-between items-center border-b border-white/10 pb-2">
+              <span>MIA / FL Route</span>
+              <span class="text-[#FFC83D] font-bold">7.82% CTR</span>
+            </div>
+            <div class="flex justify-between items-center border-b border-white/10 pb-2">
+              <span>LHR / London Corridor</span>
+              <span class="text-[#35C58A] font-bold">High-Intent Leads</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span>JFK / NY Route</span>
+              <span class="text-[#5E7CFF] font-bold">₹0.80 CPC</span>
+            </div>
+          </div>
+          <p class="text-xs text-white/70">Luxury pet owner audience signals produced 15 out of 17 warm Meta leads across high-performing US/UK flight routes.</p>
+        </div>
+
+        <!-- DR MICHELLE SHAH -->
+        <div class="glass-card rounded-2xl p-8">
+          <span class="text-xs font-mono text-[#FFC83D] bg-white/10 px-3 py-1 rounded uppercase tracking-wider">Pediatric Education</span>
+          <h3 class="font-syne text-2xl font-bold text-white mt-4 mb-2">Dr. Michelle Shah</h3>
+          <p class="text-base font-bold text-[#35C58A] mb-4">327K+ impressions &amp; 1,513 LPVs from ₹2.9K budget</p>
+
+          <div class="bg-black/50 p-4 rounded-xl border border-white/10 my-4 space-y-2 text-xs font-mono">
+            <div class="flex justify-between">
+              <span>Impressions</span>
+              <span class="text-white/60">327,150</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Reach</span>
+              <span class="text-white/60">260,703</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Ad Clicks</span>
+              <span class="text-[#FFC83D]">2,584</span>
+            </div>
+            <div class="flex justify-between font-bold text-[#35C58A]">
+              <span>Landing Page Views</span>
+              <span>1,513 (58.5% Rate)</span>
+            </div>
+          </div>
+          <p class="text-xs text-white/70">Compliant, educational parent messaging delivered a 58.5% click-to-LPV conversion rate via mobile-optimized funnels.</p>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
-  <!-- PLAYBOOK -->
+  <!-- FULL-FUNNEL PLAYBOOK -->
   <section id="playbook" class="py-24 px-6 max-w-7xl mx-auto">
-    <div class="mb-16 border-b border-black/10 pb-8">
-      <span class="text-xs font-mono uppercase tracking-widest text-[#006B57] font-bold block mb-2">03. Growth Framework</span>
-      <h2 class="text-4xl md:text-6xl font-black tracking-tight text-[#0A0A0A] uppercase">Full-Funnel Playbook</h2>
+    <div class="mb-16 border-b border-black/10 pb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-[#006B57] font-extrabold block mb-2">03. Growth Framework</span>
+        <h2 class="font-syne text-4xl md:text-6xl font-black tracking-tight text-[#0A0A0A] uppercase">Full-Funnel Playbook</h2>
+      </div>
+      <span class="text-xs font-mono text-black/50">SYSTEMATIZED REPEATABLE ACQUISITION</span>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="bg-white p-8 rounded-2xl border border-black/10 shadow-sm">
-        <div class="text-xs font-mono font-bold text-[#006B57] mb-2">01. TOP FUNNEL</div>
-        <h3 class="text-2xl font-bold mb-4">Attention & Reach</h3>
-        <p class="text-sm text-black/70 leading-relaxed mb-4">Deploying high-impact UGC and offer-led creative to build qualified category awareness at optimal CPM.</p>
+      <div class="bg-white p-8 rounded-2xl border border-black/10 shadow-sm hover:border-[#006B57] transition-all hover:shadow-xl group">
+        <div class="w-12 h-12 bg-[#006B57]/10 text-[#006B57] rounded-xl flex items-center justify-center font-mono font-extrabold text-lg mb-6 group-hover:bg-[#006B57] group-hover:text-white transition-colors">
+          01
+        </div>
+        <div class="text-xs font-mono font-bold text-[#006B57] mb-2 uppercase">TOP FUNNEL</div>
+        <h3 class="font-syne text-2xl font-bold text-[#0A0A0A] mb-4">Attention &amp; Scale</h3>
+        <p class="text-sm text-black/70 leading-relaxed mb-6">Deploying high-impact UGC and offer-led short video creative to build qualified category awareness at optimal CPM.</p>
+        <div class="pt-4 border-t border-black/5 text-xs font-mono text-[#006B57] font-bold">
+          KPIs: CPM, CPV, VCR, Brand Search Lift
+        </div>
       </div>
-      <div class="bg-white p-8 rounded-2xl border border-black/10 shadow-sm">
-        <div class="text-xs font-mono font-bold text-[#006B57] mb-2">02. MIDDLE FUNNEL</div>
-        <h3 class="text-2xl font-bold mb-4">Intent & Qualification</h3>
-        <p class="text-sm text-black/70 leading-relaxed mb-4">Capturing high-intent Google search demand and qualifying leads via WhatsApp automation.</p>
+
+      <div class="bg-white p-8 rounded-2xl border border-black/10 shadow-sm hover:border-[#006B57] transition-all hover:shadow-xl group">
+        <div class="w-12 h-12 bg-[#FFC83D]/20 text-[#0A0A0A] rounded-xl flex items-center justify-center font-mono font-extrabold text-lg mb-6 group-hover:bg-[#FFC83D] transition-colors">
+          02
+        </div>
+        <div class="text-xs font-mono font-bold text-[#006B57] mb-2 uppercase">MIDDLE FUNNEL</div>
+        <h3 class="font-syne text-2xl font-bold text-[#0A0A0A] mb-4">Intent &amp; Lead Capture</h3>
+        <p class="text-sm text-black/70 leading-relaxed mb-6">Capturing high-intent search demand and qualifying prospects through optimized landing pages and WhatsApp lead workflows.</p>
+        <div class="pt-4 border-t border-black/5 text-xs font-mono text-[#006B57] font-bold">
+          KPIs: CTR, CPC, Cost Per Qualified Lead
+        </div>
       </div>
-      <div class="bg-white p-8 rounded-2xl border border-black/10 shadow-sm">
-        <div class="text-xs font-mono font-bold text-[#006B57] mb-2">03. BOTTOM FUNNEL</div>
-        <h3 class="text-2xl font-bold mb-4">Revenue & ROAS</h3>
-        <p class="text-sm text-black/70 leading-relaxed mb-4">Maximizing conversion rate using hyper-local geo-fencing, retargeting, and cart recovery sequences.</p>
+
+      <div class="bg-white p-8 rounded-2xl border border-black/10 shadow-sm hover:border-[#006B57] transition-all hover:shadow-xl group">
+        <div class="w-12 h-12 bg-[#35C58A]/20 text-[#006B57] rounded-xl flex items-center justify-center font-mono font-extrabold text-lg mb-6 group-hover:bg-[#35C58A] group-hover:text-black transition-colors">
+          03
+        </div>
+        <div class="text-xs font-mono font-bold text-[#006B57] mb-2 uppercase">BOTTOM FUNNEL</div>
+        <h3 class="font-syne text-2xl font-bold text-[#0A0A0A] mb-4">Revenue &amp; Retargeting</h3>
+        <p class="text-sm text-black/70 leading-relaxed mb-6">Converting warm leads using hyper-local geo-fencing, dynamic product retargeting, and automated cart abandonment sequences.</p>
+        <div class="pt-4 border-t border-black/5 text-xs font-mono text-[#006B57] font-bold">
+          KPIs: ROAS, Conversion Rate, CAC
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="py-24 px-6 bg-[#0A0A0A] text-[#F5F2EA]">
+  <!-- CAREER TIMELINE -->
+  <section id="experience" class="py-24 px-6 bg-white border-t border-black/10">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-16 border-b border-black/10 pb-6">
+        <span class="text-xs font-mono uppercase tracking-widest text-[#006B57] font-extrabold block mb-2">04. Track Record</span>
+        <h2 class="font-syne text-4xl md:text-5xl font-black tracking-tight text-[#0A0A0A] uppercase">Career Experience</h2>
+      </div>
+
+      <div class="relative border-l-2 border-[#006B57] pl-8 space-y-12 ml-2">
+        
+        <div class="relative group">
+          <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-[#006B57] border-4 border-white group-hover:bg-[#FFC83D] transition-colors"></div>
+          <div class="text-xs font-mono text-[#006B57] font-bold">Jan 2025 - Present</div>
+          <h3 class="font-syne text-xl font-bold text-[#0A0A0A] mt-1">Performance Marketing Lead</h3>
+          <div class="text-xs font-semibold text-black/50 mb-2">Rafiki Marketing</div>
+          <p class="text-sm text-black/70 leading-relaxed">Leading media planning, full-funnel growth strategy, and campaign execution across enterprise and consumer accounts.</p>
+        </div>
+
+        <div class="relative group">
+          <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-[#006B57] border-4 border-white group-hover:bg-[#FFC83D] transition-colors"></div>
+          <div class="text-xs font-mono text-[#006B57] font-bold">Jan 2024 - Jan 2025</div>
+          <h3 class="font-syne text-xl font-bold text-[#0A0A0A] mt-1">Senior Performance Marketing Specialist</h3>
+          <div class="text-xs font-semibold text-black/50 mb-2">Rafiki Marketing</div>
+          <p class="text-sm text-black/70 leading-relaxed">Managed performance ad budgets, ROAS optimization, and lifecycle automation funnels across Meta and Google.</p>
+        </div>
+
+        <div class="relative group">
+          <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-[#006B57] border-4 border-white group-hover:bg-[#FFC83D] transition-colors"></div>
+          <div class="text-xs font-mono text-[#006B57] font-bold">Jan 2021 - Dec 2023</div>
+          <h3 class="font-syne text-xl font-bold text-[#0A0A0A] mt-1">Marketing Manager</h3>
+          <div class="text-xs font-semibold text-black/50 mb-2">Seedtree</div>
+          <p class="text-sm text-black/70 leading-relaxed">Engineered organic content strategy resulting in 60% boost in engagement and brand visibility.</p>
+        </div>
+
+        <div class="relative group">
+          <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-[#006B57] border-4 border-white group-hover:bg-[#FFC83D] transition-colors"></div>
+          <div class="text-xs font-mono text-[#006B57] font-bold">Feb 2020 - Aug 2020</div>
+          <h3 class="font-syne text-xl font-bold text-[#0A0A0A] mt-1">Client Servicing Executive</h3>
+          <div class="text-xs font-semibold text-black/50 mb-2">Resonance Digital</div>
+          <p class="text-sm text-black/70 leading-relaxed">Managed client communication, creative feedback cycles, and campaign execution deadlines.</p>
+        </div>
+
+        <div class="relative group">
+          <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-[#006B57] border-4 border-white group-hover:bg-[#FFC83D] transition-colors"></div>
+          <div class="text-xs font-mono text-[#006B57] font-bold">2013 - 2020</div>
+          <h3 class="font-syne text-xl font-bold text-[#0A0A0A] mt-1">Co-Founder</h3>
+          <div class="text-xs font-semibold text-black/50 mb-2">Independent Ventures &amp; Event Management</div>
+          <p class="text-sm text-black/70 leading-relaxed">Managed operations, business acquisition, budget planning, and client relations for independent commercial ventures.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / FOOTER -->
+  <section id="contact" class="py-24 px-6 bg-[#0A0A0A] text-[#F5F2EA] border-t border-white/10">
     <div class="max-w-5xl mx-auto text-center">
       <span class="text-xs font-mono uppercase tracking-widest text-[#FFC83D] block mb-4">05. Initiate Contact</span>
-      <h2 class="text-4xl md:text-6xl font-black text-white uppercase mb-8">Ready to Scale Your Acquisition?</h2>
-      <div class="flex justify-center gap-4 font-mono text-xs">
-        <a href="mailto:shubhanshnigam@gmail.com" class="bg-[#FFC83D] text-[#0A0A0A] font-bold px-6 py-4 rounded hover:bg-[#006B57] hover:text-white transition-all">
-          shubhanshnigam@gmail.com
+      <h2 class="font-syne text-4xl md:text-7xl font-black text-white uppercase mb-8">
+        Have a growth goal worth scaling?
+      </h2>
+      <p class="text-base md:text-lg text-white/70 max-w-2xl mx-auto mb-12 font-light">
+        Connecting paid acquisition, creative messaging, data analytics, and client goals into predictable performance systems.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-16 font-mono text-xs">
+        <a href="mailto:shubhanshnigam@gmail.com" class="flex items-center space-x-2 bg-[#FFC83D] text-[#0A0A0A] font-extrabold px-8 py-4 rounded hover:bg-[#006B57] hover:text-white transition-all transform hover:-translate-y-1 shadow-lg hover:shadow-[#FFC83D]/20">
+          <i data-lucide="mail" class="w-4 h-4"></i>
+          <span>shubhanshnigam@gmail.com</span>
         </a>
-        <a href="https://wa.me/919833761462" target="_blank" class="bg-white/10 text-white font-bold px-6 py-4 rounded hover:bg-white/20 transition-all">
-          WhatsApp Direct
+        <a href="https://wa.me/919833761462" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 bg-white/10 text-white font-extrabold px-8 py-4 rounded hover:bg-white/20 transition-all transform hover:-translate-y-1">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          <span>WHATSAPP DIRECT</span>
         </a>
+      </div>
+
+      <div class="pt-12 border-t border-white/10 text-[11px] font-mono text-white/40 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div>© 2026 SHUBHANSH NIGAM. ALL RIGHTS RESERVED.</div>
+        <div class="text-right">MUMBAI, INDIA · PERFORMANCE &amp; GROWTH MARKETING LEAD</div>
       </div>
     </div>
   </section>
 
+  <!-- GSAP ANIMATION SCRIPT -->
   <script>
+    // Initialize Lucide Icons
     lucide.createIcons();
+
+    // GSAP ScrollTrigger Animations
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero Reveal
+    gsap.from(".reveal-hero", {
+      opacity: 0,
+      y: 40,
+      duration: 1,
+      stagger: 0.15,
+      ease: "power3.out"
+    });
+
+    // Metric Cards Counter Animation
+    ScrollTrigger.create({
+      trigger: "#results",
+      start: "top 80%",
+      onEnter: () => {
+        document.querySelectorAll('.counter').forEach(counter => {
+          const target = parseFloat(counter.getAttribute('data-target'));
+          const decimals = counter.getAttribute('data-decimals') || 0;
+          gsap.to(counter, {
+            innerText: target,
+            duration: 2,
+            snap: { innerText: decimals ? 0.1 : 1 },
+            ease: "power2.out",
+            onUpdate: function() {
+              if (decimals > 0) {
+                counter.innerText = parseFloat(counter.innerText).toFixed(decimals);
+              }
+            }
+          });
+        });
+      }
+    });
+
+    // Progress Bar Fill on Scroll
+    ScrollTrigger.create({
+      trigger: "#work",
+      start: "top 70%",
+      onEnter: () => {
+        document.querySelectorAll('.progress-bar').forEach(bar => {
+          bar.style.width = bar.getAttribute('data-width');
+        });
+        document.getElementById('nudge-chart-container').classList.add('chart-active');
+      }
+    });
   </script>
 </body>
 </html>
